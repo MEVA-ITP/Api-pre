@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Firebase</title>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+    <!--<script src="firebase.js"></script>-->
+    <script>
+        // Initialize Firebase
+        let config = {
+            apiKey: "AIzaSyDqEyEay4QvQd-9tPwP8McJSJrPnzE_QbQ",
+            authDomain: "onquip.firebaseapp.com",
+            databaseURL: "https://onquip.firebaseio.com",
+            projectId: "onquip",
+            storageBucket: "onquip.appspot.com",
+            messagingSenderId: "436957857147"
+        };
+        firebase.initializeApp(config);
+
+        const messaging = firebase.messaging();
+        messaging.requestPermission()
+            .then(() => {
+                console.log('Have permission')
+                return messaging.getToken();
+            })
+            .then((token) => {
+                console.log(token);
+            })
+            .catch(() => {
+                console.log("Denied")
+            })
+
+        messaging.onMessage(function (payload) {
+            console.log("onMessage", payload)
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>
