@@ -1,6 +1,9 @@
 const mongoose = require("mongoose")
 const validator = require("validator")
 const phone = require("phone")
+// Using validator for email, and other validation
+// Not using validator for phone, because Austrian phone number are not recognized
+// Using phone for that purpose. plus for phone, also gives us normalized phone numbers. For sms or something
 
 const userSchema = new mongoose.Schema({
     email: {
