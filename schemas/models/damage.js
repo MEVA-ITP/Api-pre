@@ -5,7 +5,7 @@ const damageSchema = new mongoose.Schema({
     equipment: {type: 'ObjectId', ref: 'Equipment', required: true},
     time: {type: Date, require},
     description: {type: String, required: true},
-    status: {type: ["broken", "in_repair", "ok", "not_available"], required: true},
+    status: {type: ["broken", "in_repair", "repaired"], required: true},
 })
 
-module.exports = mongoose.model("Damage", damageSchema)
+module.exports = damageSchema

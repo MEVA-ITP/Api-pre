@@ -3,9 +3,19 @@ const Equipment = require("./equipment")
 const Reservation = require("./reservation")
 const Damage = require("./damage")
 
-module.exports = {
+const schemas = {
     User,
     Equipment,
     Reservation,
-    Damage,
+    Damage
+}
+
+module.exports = (connection) => {
+    let ret = {}
+
+    for(let key in schemas) {
+        ret[key] = connection.model(key, schemas[key])
+    }
+
+    return ret
 }

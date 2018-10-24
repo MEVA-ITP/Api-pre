@@ -7,4 +7,4 @@ const reservationSchema = new mongoose.Schema({
     to: {type: Date, required: true},
 })
 
-module.exports = mongoose.model("Reservation", reservationSchema)
+module.exports = reservationSchema
