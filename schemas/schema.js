@@ -1,6 +1,6 @@
-const Schema = require("schm")
+const mongoose = require("mongoose")
 
-const user = new Schema({
+const user = new mongoose.Schema({
     email: {type: String, required: true},
     phone: {type: String, required: true},
     external: {type: Boolean, required: true},
@@ -9,25 +9,28 @@ const user = new Schema({
     lname: String, // Only required if external
 })
 
-const equipment = new Schema({
+const equipment = new mongoose.Schema({
+    name: {type: String, required: true},
     serial: {type: String, required: true},
     description: {type: String, required: true},
-    status: {type: ["ok", "broken"], required: true}, // Other?
+    status: {type: ["ok", "broken","not available"], required: true}, // Other?
     attributes: {type: Object, required: true},
-    tags: [String],
+    //tags: [String]
 })
 
-const reservation = new Schema({
-    user: {type: user, required: true},
-    equipment: {type: [equipment], required: true},
+const reservation = new mongoose.Schema({
+    user: {type: 'ObjectId', ref: 'user', required: true},
+    equipment: {type: 'ObjectId', ref: 'equipment', required: true},
     from: {type: Date, required: true},
     to: {type: Date, required: true},
 })
 
-const damage = new Schema({
-    user: {type: user, required: true},
-    equipment: {type: [equipment], required: true},
+const damage = new mongoose.Schema({
+    user: {type: 'ObjectId', ref: 'user', required: true},
+    equipment: {type: 'ObjectId', ref: 'equipment', required: true},
     time: {type: Date, require},
     description: {type: String, required: true},
     status: {type: ["broken", "in_repair", "repaired"], required: true},
 })
+
+module.exports = {user, equipment, reservation, damage};
