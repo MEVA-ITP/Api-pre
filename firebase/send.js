@@ -1,6 +1,7 @@
 let admin = require("firebase-admin");
 
-let serviceAccount = require("./onquip-firebase-adminsdk-6qdvh-f47337a8e5.json");
+// replace with your private key file
+let serviceAccount = require("./firebase-adminsdk.json");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
