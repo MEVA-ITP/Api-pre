@@ -2,11 +2,12 @@ const createModels = require("./models")
 const mongoose = require('mongoose')
 
 const connect = async () => {
+    // Creating connection
     const connection = await mongoose.createConnection("mongodb://localhost:27017/onquip")
     console.log("CONNECTED")
 
+    // Importing and configuring models
     const {User, Equipment, Reservation, Damage} = createModels(connection)
-
 
     // Works too, please user other style.
     // Reason: we are working object oriented
@@ -58,9 +59,11 @@ const connect = async () => {
     await first_damage.save()
     console.log("INSERTED damage")
 
+    // Close connection after we don't need it anymore
     connection.close()
 }
 
+// Tell us we are finished or log us the error
 connect()
     .then((out) => {
         console.log("FINISHED")
