@@ -7,7 +7,7 @@ const connect = async () => {
     console.log("CONNECTED")
 
     // Importing and configuring models
-    const {User, Equipment, Reservation, Damage} = createModels(connection)
+    const {User, Device, Reservation, Damage} = createModels(connection)
 
     // Works too, please user other style.
     // Reason: we are working object oriented
@@ -30,7 +30,7 @@ const connect = async () => {
     await fletzi.save()
     console.log("INSERTED User")
 
-    const canon = new Equipment({
+    const canon = new Device({
         name: 'Kuhle Canon',
         serial: '12345678900987654321',
         description: 'Eine dolle Kamera!',
@@ -42,7 +42,7 @@ const connect = async () => {
 
     const first_res = new Reservation({
         user: fletzi,
-        equipment: canon,
+        device: canon,
         from: new Date(),
         to: new Date(),
     })
@@ -51,7 +51,7 @@ const connect = async () => {
 
     const first_damage = new Damage({
         user: fletzi._id,
-        equipment: canon._id,
+        device: canon._id,
         time: new Date(),
         description: "Testing the test",
         status: "broken",

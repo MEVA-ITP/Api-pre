@@ -1,13 +1,13 @@
 // Import all schemas
 const User = require("./user")
-const Equipment = require("./equipment")
+const Device = require("./device")
 const Reservation = require("./reservation")
 const Damage = require("./damage")
 
 // Save all schemas into dict for easier working in createModels
 const schemas = {
     User,
-    Equipment,
+    Device,
     Reservation,
     Damage
 }
