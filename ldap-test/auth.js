@@ -11,7 +11,7 @@ var ldap = require('ldapjs');
 var client = ldap.createClient({
     url: 'ldap://tgm.ac.at'
 });
-
+//if you want to test it, write your name instead of mfletzberger
 client.bind('mfletzberger@tgm.ac.at', pw, function(err) {
     console.error(err)
 });
