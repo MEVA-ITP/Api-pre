@@ -31,6 +31,7 @@ const userSchema = new mongoose.Schema({
     active: {type: Boolean, required: true}, // externale == false => auto on
     fname: String, // Only required if external
     lname: String, // Only required if external
+    password: String, // Only required if external
 })
 
 module.exports = userSchema
